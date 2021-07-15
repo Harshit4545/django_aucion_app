@@ -1,0 +1,49 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h1>
+<div class="card-columns">
+    
+  <div class="card" style="width:300px" >
+    <span class="card-title"> 
+      <img class="card-img-top" src="../../static/auctions/img/electronic.jpeg" alt="Card image" style="width:320px">
+      <div class="card-img-overlay">
+        <a href="{% url 'category' 'electronic' %}" class="card-link text-white bg-dark stretched-link"><strong>Electronic</strong></a> 
+      </div>   
+    </span>  
+  </div> 
+  
+  <div class="card" style="width:300px" >
+    <span class="card-title"> 
+      <img class="card-img-top" src="../../static/auctions/img/vechile.jpeg" alt="Card image" style="width:300px">
+      <div class="card-img-overlay">
+        <a href="{% url 'category' 'vechile' %}" class="card-link text-white bg-dark stretched-link"><strong>Vechile</strong></a> 
+      </div>   
+    </span>  
+  </div> 
+ 
+  <div class="card" style="width:600px" >
+    <span class="card-title"> 
+      <img class="card-img-top" src="../../static/auctions/img/toy.jpg" alt="Card image" style="width:350px">
+      <div class="card-img-overlay">
+        <a href="{% url 'category' 'toy' %}" class="card-link text-white bg-dark stretched-link"><strong>Toy</strong></a> 
+      </div>   
+    </span>  
+  </div> 
+  <div class="card" style="width:200px" >
+    <span class="card-title"> 
+      <img class="card-img-top" src="../../static/auctions/img/fashon.jpg" alt="Card image" style="width:300px">
+      <div class="card-img-overlay">
+        <a href="{% url 'category' 'fashon' %}" class="card-link text-white bg-dark stretched-link"><strong>Fashion</strong></a> 
+      </div>   
+    </span>  
+  </div> 
+</div>
+</h1> 
+
+
+
+
+
+
+{% endblock %}

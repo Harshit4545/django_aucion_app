@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+  {% for active in data %}
+    
+   <div class="card" style="width:800px" >
+    <span class="card-title text-center ">
+      <h1>{{ active.title}}</h1>
+      <img class="float-left" src="{{ active.image }}" alt="Chania" width="200" height="200"> 
+      <p class="card-text">Description:{{ active.description}} </p>
+     
+      <span class="badge badge-pill badge-dark"><h5>Bid start at : Rs - {{ active.price }}</h5></span> 
+     
+      <div class="card-text">
+      <a href="{% url 'viewlist' active.id %}" type="button" class="btn btn-primary" >View item</a>
+      </div>
+    </span>  
+  {% endfor %}
+  
+   </div>
+{% endblock %}

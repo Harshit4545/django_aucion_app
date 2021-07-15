@@ -1,0 +1,73 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+   {% if message %}
+     {{message}}
+   {% endif %}    
+  <div class="card">
+     
+      {% if request.user == iteam.user %}
+      <div class="card-texts">
+        {% if iteam.closed %}
+        <span class="badge badge-danger">Closed</span> 
+        {% else %}   
+        <span class="badge badge-success">Active</span>
+        {% endif %}    
+        <a href="{% url 'closeauction' iteam.id %}" class="btn btn-primary"> Close Auction </a>
+      </div>
+      {% endif %}
+
+
+      <h1>{{ iteam.title}} </h1> 
+      <img class="float-left" src="{{ iteam.image }}" alt="Chania" width="200" height="200"> 
+      <p> description : {{ iteam.description}} </p>
+      <p> price : {{ iteam.price }} </p>
+     
+     
+      {% if iteam.winner %}    
+        {% if iteam.winner == request.user.username %}
+        <h1>You are the winner </h1>
+        {% else %}
+        <h1> {{iteam.winner}} </h1>
+        {% endif %}
+
+      {% endif %}
+
+      
+    <form action="{% url 'viewlist' iteam.id  %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="havebid" placeholder="havebid">
+        </div>
+      <input class="btn btn-primary" type="submit" value="Bid">
+    </form>
+
+
+
+    <div class="card-texts">
+    <form action="{% url 'comment' iteam.id  %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+          <input class="form-control" autofocus type="text" name="comment" placeholder="comment">
+      </div>
+    <input class="btn btn-primary badge-pill"  type="submit" value="comment">
+    </form>
+    {% for comment in comments %}
+    {{comment}}<br>
+    {% endfor %}  
+    </div>
+
+    <div class="card-texts">
+    {% if addlist %}
+    <a href="{% url 'dltwatchlist' iteam.id %}" class="btn btn-primary">Remove from Watchlist</a>
+    {% else %}
+    <a href="{% url 'addwatchlist' iteam.id %}" class="btn btn-primary">ADD to Watchlist</a>
+    {% endif %}
+    </div>
+    
+
+
+  </div>
+    
+{% endblock %}
+
