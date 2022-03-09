@@ -144,7 +144,7 @@ def viewlist(request,listing_id):
          listadd = watchlist.objects.filter(list_id=listing_id,user=request.user.username)
          return render(request,"auctions/viewlist.html",{
              "iteam":view_list,
-             "addlist":listadd 
+             "addlist":listadd
              #"comment":comment
          })          
 
@@ -169,7 +169,7 @@ def addwatchlist(request,listing_id):
 def dltwatchlist(request,listing_id):
      
     listadd = watchlist.objects.filter(list_id=listing_id,user=request.user.username)     
-    listadd.delete()
+    listadd.delete()    
     #list = listing.objects.get(id=listing_id)
    # listadd = watchlist.objects.filter(list_id=listing_id,user=request.user.username)
     
